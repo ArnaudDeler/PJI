@@ -1,0 +1,19 @@
+
+
+# Temporaire
+*~
+*.tmp
+
+# IDE
+.idea/*
+
+# Produit de compilation
+doc/*
+classes/*
+
+*.class
+
+# Images
+*.jpeg
+*.jpg
+*.png
