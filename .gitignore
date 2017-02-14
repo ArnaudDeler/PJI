@@ -5,7 +5,7 @@
 *.tmp
 
 # IDE
-.idea/*
+**/.idea/**
 
 # Produit de compilation
 doc/*
