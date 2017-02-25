@@ -1,18 +1,12 @@
 package images;
 
-import java.awt.*;
+import images.transformation.Resizer;
+import images.transformation.Rotater;
 
 /**
  * @author Marion Noirbent.
  */
 public class Main {
-
-    public static void setHint(Graphics2D g){
-        g.setComposite(AlphaComposite.Src);
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    }
 
     public static void main(String[] args) {
         String dir;
@@ -22,8 +16,8 @@ public class Main {
             dir = "/home/spirita/M1S2/PJI/images/";
             // DIR = Paths.get("$PWD");
         }
-        ImageResizer resizer = new ImageResizer(50, dir);
-        Rotater rotater = new Rotater(dir);
+        Resizer resizer = new Resizer(dir);
+        Rotater rotater = new Rotater(Math.PI, dir);
         resizer.loopOnDir();
         rotater.loopOnDir();
     }
