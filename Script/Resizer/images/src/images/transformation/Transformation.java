@@ -35,11 +35,14 @@ public abstract class Transformation {
     // Methods
 
     public int type(BufferedImage originalImage){
+        /*
         int type = originalImage.getType();
         if (type == BufferedImage.TYPE_CUSTOM) {
             type = BufferedImage.TYPE_INT_ARGB;
         }
         return type;
+        */
+        return BufferedImage.TYPE_BYTE_GRAY; // Ce Type doit être compatible avec le format dans lequel l'image sera écrit dans loopOnDir.
     }
 
     public void setHint(Graphics2D g){
@@ -53,9 +56,17 @@ public abstract class Transformation {
         File[] images = Paths.get(dir + pathIn).toFile().listFiles();
         for (File img : images) {
             try {
+                // TODO trouver un meilleur regex
+                Boolean ok;
+                String[] imgName = img.getName().split(".png");
+                imgName = imgName[0].split(".bmp");
+                System.out.println(imgName[0]);
+
                 BufferedImage originalImage = ImageIO.read(img);
                 BufferedImage transformedImage = this.transform(originalImage);
-                ImageIO.write(transformedImage, "png", new File(dir +pathOut + prefix + img.getName()));
+
+                ok = ImageIO.write(transformedImage, "bmp", new File(dir +pathOut + prefix + imgName[0] + ".bmp"));
+                System.out.println(ok);
             } catch (IOException e) {}
         }
     }
