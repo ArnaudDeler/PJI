@@ -31,7 +31,7 @@ public class Rotater extends Transformation {
         BufferedImage transformedImage = new BufferedImage(originalImage.getWidth(), originalImage.getHeight(), this.type(originalImage));
         Graphics2D g = transformedImage.createGraphics();
         if (imgAngle % (2*Math.PI) != 0) {
-            AffineTransform transform = AffineTransform.getRotateInstance(imgAngle);
+            AffineTransform transform = AffineTransform.getRotateInstance(imgAngle,transformedImage.getWidth(), transformedImage.getHeight());
             g.transform(transform);
         }
         g.drawImage(originalImage, transformedImage.getWidth(), transformedImage.getHeight(), null);
